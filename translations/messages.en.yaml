@@ -1,0 +1,8 @@
+hello_username: 'Hello %username%'
+account.logout: Logout
+account.login: Login
+account.register: Registration
+nav.home: Home
+nav.programs: Programs
+nav.categories: Categories
+language: Language

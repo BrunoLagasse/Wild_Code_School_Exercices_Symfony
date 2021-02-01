@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Catégorie {{ category.name }}{% endblock %}
+{% block body %}
+        <h1>Toutes les séries de la catégorie {{ category.name }} : </h1>
+        {% for program in programs %}
+                <h3><a href="{{ path("program_show", { slug: program.slug }) }}">{{ program.title }}</a></h3>
+                <p>{{ program.summary }}</p>
+                <p>Catégorie : {{ program.category.name }}</p>
+        {% else %}
+                Aucune série trouvée.
+        {% endfor %}
+
+        <br>
+
+        <button><a href="{{ path('program_new')}}">Ajouter une Série</a></button>
+
+{% endblock %}

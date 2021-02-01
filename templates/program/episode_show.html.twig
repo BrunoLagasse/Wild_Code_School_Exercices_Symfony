@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ program.title }}{% endblock %}
+
+{% block body %}
+
+    <div class="media">
+        <div>
+            <h2>{{ program.title }}: Saison {{ season.number }}</h2>
+            <h3>Episode {{ episode.number }}: {{ episode.title }}</h3>
+            <h4>Synopsis:</h4>
+            <p>{{ episode.synopsis }}</p>
+        </div>
+    </div>
+    <br>
+
+    {% for comment in episode.comments %}
+        <p><b>Utilisateur:</b> {{ comment.author.email }}</p>
+        <p><b>Note:</b> {{ comment.rate }}/5</p>
+        <p><b>Commentaire:</b> {{ comment.comment }}</p>
+
+        {% if app.user == comment.author or is_granted("ROLE_ADMIN") %}
+            {{ include('comment/_delete_form.html.twig') }}
+        {%endif%}
+        <hr>
+    {% endfor %}
+
+    {% if app.user %}
+        <h4>Ajouter un commentaire</h4>
+        {{ include('comment/_form.html.twig') }}
+    {% endif %}
+
+    <a href="{{ path('program_index') }}">
+        Retour à la liste des programmes
+    </a>
+
+{% endblock %}

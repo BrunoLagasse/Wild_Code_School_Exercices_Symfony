@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acteur #{{ actor.id }}{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center my-4">{{ actor.name }}</h1>
+    <img class="align-self-start mr-3" src="{{ asset('uploads/' ~ actor.picture) }}" style="width:320px;"><br>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a href="{{path('actor_edit', {id: actor.id})}}">Editer la photo</a>
+    {% endif %}
+    <br><a href="{{path('actor_index')}}">Retour à la liste des acteurs</a>
+
+    <h2>Listes des séries</h2>
+    <ul>
+        {% for program in actor.programs %}
+            <li><a href="{{ path("program_show", { slug: program.slug }) }}">{{ program.title }}</a></li>
+        {% else %}
+            Aucune série trouvé
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Actor{% endblock %}
+
+{% block body %}
+    <h1>Actor</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ actor.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ actor.name }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ actor.picture }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('actor_index') }}">back to list</a>
+
+    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
+
+    {{ include('actor/_delete_form.html.twig') }}
+{% endblock %}
+ #}

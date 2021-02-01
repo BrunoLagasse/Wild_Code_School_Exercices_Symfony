@@ -1,0 +1,15 @@
+controllers:
+   resource: ../../src/Controller/
+   type: annotation
+   prefix: /{_locale}
+   requirements:
+       _locale: fr|en
+
+controller:
+   resource: ../../src/Controller/DefController.php
+   type: annotation
+   prefix: /
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation

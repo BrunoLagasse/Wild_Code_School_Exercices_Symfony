@@ -1,0 +1,8 @@
+hello_username: 'Salut %username%'
+account.logout: 'Se déconnecter'
+account.login: 'Se connecter'
+account.register: 'Créer un compte'
+nav.home: Accueil
+nav.programs: Programmes
+nav.categories: Categories
+language: Langue
